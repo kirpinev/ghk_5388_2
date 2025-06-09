@@ -14,16 +14,15 @@ import { Gap } from "@alfalab/core-components/gap";
 import { useState } from "react";
 
 export const App = () => {
-  const [loading, setLoading] = useState(false);
   const [thx, setThx] = useState(LS.getItem(LSKeys.ShowThx, false));
 
   const submit = () => {
-    setLoading(true);
-    Promise.resolve().then(() => {
-      setLoading(false);
-      setThx(true);
-      LS.setItem(LSKeys.ShowThx, true);
+    window.gtag("event", "5388_dalee_click", {
+      variant_name: "ghk_5388_2",
     });
+
+    setThx(true);
+    LS.setItem(LSKeys.ShowThx, true);
   };
 
   if (thx) {
@@ -146,26 +145,26 @@ export const App = () => {
           </div>
           <div className={appSt.benefit}>
             <img
-                src={icon5}
-                alt=""
-                width={48}
-                height={48}
-                style={{ objectFit: "cover" }}
+              src={icon5}
+              alt=""
+              width={48}
+              height={48}
+              style={{ objectFit: "cover" }}
             />
             <div style={{ display: "flex", flexDirection: "column" }}>
               <Typography.Text
-                  tag="p"
-                  view="primary-large"
-                  weight="bold"
-                  style={{ marginBottom: 0 }}
+                tag="p"
+                view="primary-large"
+                weight="bold"
+                style={{ marginBottom: 0 }}
               >
                 Настройка истории
               </Typography.Text>
               <Typography.Text
-                  tag="p"
-                  view="primary-medium"
-                  color="secondary"
-                  style={{ marginBottom: 0 }}
+                tag="p"
+                view="primary-medium"
+                color="secondary"
+                style={{ marginBottom: 0 }}
               >
                 Выбирайте, какие траты видны участникам
               </Typography.Text>
@@ -177,7 +176,7 @@ export const App = () => {
       <Gap size={96} />
 
       <div className={appSt.bottomBtnThx}>
-        <ButtonMobile loading={loading} onClick={submit} block view="primary">
+        <ButtonMobile onClick={submit} block view="primary">
           К открытию счёта
         </ButtonMobile>
       </div>
